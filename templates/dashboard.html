@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block content %}
+
+        <div class="jumbotron" id="jumbo">
+            <h2>Generated Descriptions</h2>
+            <div class="inner">
+                <div id="table">
+                    {% if gen %}
+                    <table>
+                        {% for r in gen %}
+                        <tr>
+                            {% for t in r %}
+                            <td>{{ t }}</td>
+                            {% endfor %}
+                            <td><a href="/save_description/" type="submit" class="btn btn-info">Save</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% else %}
+                    <h3 id="err_msg">No generated text to show</h3>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <form action="/generate_description/" method="POST">
+            {% csrf_token %}
+            <div class="col-lg-6" id="main">
+                <h1>Marketeer</h1>
+                <div id="ui" class="form1">
+                    <h3>Enter Information</h3>
+                    <div class="form-group" id="male">
+                        <select id="maledd" name="male" size="" class="btn btn-primary">
+                            <option value="" disabled selected>Categories</option>
+                            <option value="jacket">Jacket</option>
+                            <option value="short">Shorts</option>
+                            <option value="shirt">Shirt</option>
+                            <option value="shoes">Shoes</option>
+                            <option value="boots">Boots</option>
+                            <option value="coat">Coat</option>
+                            <option value="suit">Suit</option>
+                            <option value="blazer">Blazer</option>
+                            <option value="sandle">Sandle</option>
+                            <option value="swimwear">Swim Wear</option>
+                            <option value="trouser">Trouser</option>
+                            <option value="underwear">Underwear</option>
+                            <option value="hoodies">Hoodies</option>
+                            <option value="jeans">Jeans</option>
+                            <option value="nightwear">Nightwear</option>
+                            <option value="polo">Polos</option>
+                            <option value="sock">Socks</option>
+                            <option value="trainer">Trainer</option>
+                            <option value="t-shirt">T-Shirt</option>
+                            <option value="waist coat">Waist Coat</option>
+                            <option value="dress">Dress</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" id="name" name="name" placeholder="Enter Brand Name Here..." value="{{ name }}" required>
+                    </div>
+                    <div class="form-group" id="key_enter" style="display: inline">
+                        <input type="text" class="form-control input-lg" id="keywords" name="keywords" placeholder="Enter Prompt Here..." value="{{ keywords }}" required>
+                    </div>
+                    <label for="keywords"><button type="button" onclick="runSpeechRecognition()" style="width: 60px; margin-top:20px; margin-bottom:20px;"><i class="fa fa-microphone"></i></button></label>
+                    <div id="suggestion_btn" >
+                        {% for line in lines %}
+                            <button class="btn btn-primary" id="sug_btn">{{ line }}</button>
+                        {% endfor %}
+                    </div>
+                    <!-- <div class="form-group" id="buttons">
+                            <h3>Select size of description generated</h3>
+                            <input type="range" class="slider" id="vol" name="range" min="0.5" max="1.8" value="1.0"><p>Characters : <span id="demo"></span></p>
+                    </div> -->
+                    <div class="row">
+                        <button href="/" type="submit" class="btn btn-info" id="gen_btn">Generate Description</button>
+                    </div>
+                    <div class="container" id="options_btn">
+                        <span title="Copy the generated description"><a class="btn"><img src="{% static '/images/1.jpeg'%}" alt="#" id="copy_btn"></a></span>
+                        <span title="Translate description"><a onclick="trans()" class="btn"><img src="{% static '/images/2.jpeg'%}" alt="#"></a></span>
+                        <span title="Show current generated descriptions"><a class="btn" id="show_desc"><img src="{% static '/images/3.jpeg'%}" alt="#"></a></span>
+                        <span title="Show description list"><a href="#" class="btn"><img src="{% static '/images/4.jpeg'%}" alt="#"></a></span>
+                    </div>
+                    <div id="loader" style="display: none;">
+                        <img src="{% static 'images/ajax-loader.gif' %}">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form action="/save_description/" method="POST">
+            {% csrf_token %}
+            <div class="col-lg-5">
+                <div id="des">
+                    <div class="form-group">
+                        <p id="para1" style="display: none">{{ translated }}</p>
+                        <p id="para2" style="display: none">{{ desc }}</p>
+                        <label for="gen_des" style="font-size:x-large;">Output</label>
+                        <textarea name="dec" id="gen_des" rows="10" cols="50" >
+                            {{ desc }}
+                        </textarea>
+                    </div>
+                </div>
+                <button href="/" class="btn btn-info btn-lg" id="btn_save" type="submit">Save</button>
+            </div>
+        </form>
+    
+{% endblock %}

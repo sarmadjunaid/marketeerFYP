@@ -1,0 +1,80 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+body{
+    background-image: url('../images/background.jpeg');
+    height: 100%;
+    background-position: center;
+    background-repeat: repeat-y;
+    background-size: cover;
+    font-family: Ubuntu;
+    position: relative;
+}
+h1{
+    animation: blink 10s infinite;
+    -webkit-animation: blink 10s infinite;
+}
+@keyframes blink {
+    0% {
+        color: violet
+    }
+    15% {
+        color: indigo
+    }
+    30% {
+        color: blue
+    }
+    42% {
+        color: yellow
+    }
+    58% {
+        color: green
+    }
+    70% {
+        color: orange
+    }
+    85% {
+        color: turquoise
+    }
+}
+
+@-webkit-keyframes blink
+ {
+    0% {
+        color: violet
+       }
+    15% {
+        color: indigo
+    }
+    30% {
+        color: blue
+    }
+    42% {
+        color: yellow
+    }
+    58% {
+        color: green
+    }
+    70% {
+        color: orange
+    }
+    85% {
+        color: turquoise
+    }
+}
+.descriptions{
+    background: rgba(248,243,196, 0.5);
+    border-radius: 10px;
+}
+.descriptions {
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.description > label{
+    font-size: 20px;
+}
+.description > h3, h4 {
+    font-family: sans-serif;
+}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Delete description
+{% endblock %}
+
+{% block content %}
+<p>Are you sure you want to delete "{{item}}"?</p>
+
+<a href="{% url 'pro_list' %}">Cancel</a>
+
+<form method="POST" action="">
+    {% csrf_token %}
+    <input type="submit" name="Confirm">
+</form>
+
+{% endblock %}

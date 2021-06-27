@@ -1,0 +1,135 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notonastaliqurdudraft.css);
+#main{
+    margin-top: -10px;
+}
+#ui{
+    padding-left:30px;
+    padding-top: 5px;
+    background-image: linear-gradient(to bottom right, #708ae9, #d5b4e1);
+    border-radius: 20px;
+    height: 470px;
+}
+h1{
+    color: blue;
+}
+#ui input{
+    border-radius: 10px;
+    border: 0px;
+    width: 300px;
+    margin-top: 20px;
+}
+#buttons{
+    text-align: center;
+    margin-top: 20px
+}
+button{
+    margin-right: 30px;
+    border-radius: 100px; 
+}
+.male{
+    pointer: cursor;
+    background-color: white;
+}
+.female{
+    pointer: cursor;
+    decorate: none;
+}
+.row a{
+    margin-top: 60px;
+}
+#des{
+    margin-top: 70px;
+    background-image: linear-gradient(to bottom right, #fff787, #a5f5f8);
+    border-radius: 20px;
+    height: 400px;
+}
+#btn_save{
+    margin-top: 70px;
+    margin-left: 390px;
+}
+.testbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    padding: 20px;
+}
+table, td {
+    border: 1px solid;
+}
+#jumbo{
+    position: absolute;
+    left: 70px;
+    z-index: 1;
+    display: none;
+}
+#jumbo h3{
+    text-align: center;
+}
+
+#gender:hover{
+    color: blue;
+    text: " testing";
+}
+#gen_des{
+	font-family: 'Noto Nastaliq Urdu Draft', serif;
+	line-height: 1.8;
+    border-radius: 20px;
+    height: 400px;
+}
+#key_enter button{
+    margin-left: 310px;
+    width: 40px;
+    height: 40px;
+}
+#ui img{
+    border-radius: 15px;
+    height:80px;
+    margin:5px;
+    margin-left: 10px;
+}
+.slider {
+    -webkit-appearance: none;
+    width: auto;
+    height: 15px;
+    border-radius: 5px;  
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: #4CAF50;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+  }
+  #spinner-box{
+    display: none;
+  }
+  #suggest_btn{
+    display: inline-block;
+    height: 100px;
+  }
+  #sug_btn{
+    margin-bottom: 22px;
+    padding: 10px;
+    font-size: bold;
+  }
+  #gen_btn{
+    margin-left: 170px;
+    margin-bottom: 15px;
+  }

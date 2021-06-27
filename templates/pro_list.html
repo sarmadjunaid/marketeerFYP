@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block style  %}
+<link rel="stylesheet" href="{% static 'css/pro_list.css' %}">
+{% endblock %}
+
+{% block title %}
+Product list
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-sm-3 col-4" id="myScrollspy">
+        {% for product in products %}
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><h3>{{ product.name }}</h3></a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#{{ product.keywords }}"><h4>{{ product.keywords }}</h4></a>
+                </div>
+            </li>
+        </ul>
+        {% endfor %}
+    </nav>
+    <div class="col-sm-9 col-8 descriptions">
+      {% for product in products %}
+        <div id="{{product.keywords}}" class="description" style=" padding: 10px">
+            <label>Brand name </label><h3>{{ product.name }}</h3>
+            <hr>
+            <label>Description </label><h4>{{ product.text }}</h4>
+            <hr>
+            <label>Keywords </label><h4>{{ product.keywords }}</h4>
+            <a href="{% url 'deleteDescription' product.id %}" class="btn btn-primary blue">Delete</a>
+            <hr>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
